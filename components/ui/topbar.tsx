@@ -1,4 +1,4 @@
-import { ChevronDown, Heart, LogIn, LogInIcon, Mail, Phone, ShoppingCart, User } from 'lucide-react'
+import { ChevronDown, Heart, Mail, Phone, ShoppingCart, User } from 'lucide-react'
 import React from 'react'
 
 const Topbar = () => {
