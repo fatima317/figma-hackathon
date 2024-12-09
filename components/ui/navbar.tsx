@@ -6,9 +6,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='w-full border-b-2 border-gray-300 p-4'>
+    <nav className='w-full border-b-2 border-gray-100 p-4'>
         <div className='max-w-7xl mx-auto flex items-center justify-between'>
-            <h1 className='text-2xl font-bold ml-36 text-[#0D0E43] tracking-wide'>Hekto</h1>
+            <h1 className='text-2xl font-bold ml-72 text-[#0D0E43] tracking-wide'>Hekto</h1>
             <div className='flex items-center justify-center gap-8 text-[#0D0E43] '>
                 <p className='relative text-[#FB2E86]'> 
                 <Link href={"#"} className='text-xs font-medium'>
