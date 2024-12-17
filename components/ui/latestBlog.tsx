@@ -1,53 +1,71 @@
+import { Calendar, PenTool } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
-const blogPosts = [
-  {
-    id: 1,
-    author: "SaberAli",
-    date: "21 August,2020",
-    title: "Top essential Trends in 2021",
-    description: "More of this less hello samlande lied much over tightly circa horse taped mightly",
-    imgSrc: "/blog1.png.png",
-  },
-  {
-    id: 2,
-    author: "Surfuxion",
-    date: "21 August,2020",
-    title: "Top essential Trends in 2021",
-    description: "More of this less hello samlande lied much over tightly circa horse taped mightly",
-    imgSrc: "/blog2.png.png",
-  },
-  {
-    id: 3,
-    author: "SaberAli",
-    date: "21 August,2020",
-    title: "Top essential Trends in 2021",
-    description: "More of this less hello samlande lied much over tightly circa horse taped mightly",
-    imgSrc: "/blog3.png.png",
-  },
-];
-
-const LeatestBlog: React.FC = () => {
+const LatestBlog = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-center text-3xl font-bold text-blue-900 mb-8">Latest Blog</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {blogPosts.map((post) => (
+    <section className="max-w-[1920px] mx-auto bg-white py-8">
+      {/* Title of the section */}
+      <h1 className="text-center text-[32px] sm:text-[42px] font-bold text-[#151875] mb-10">
+        Latest Blog
+      </h1>
+
+      {/* Container for the blog posts */}
+      <div className="flex flex-wrap items-center justify-center gap-4 mx-4 sm:mx-6 md:mx-10 lg:mx-20">
+        {[ // Mapping through the blog posts
+          { src: "/blog1.png.png", title: "Top Essential Trends in 2021", author: "SaberAli" },
+          { src: "/blog2.png.png", title: "Top Essential Trends in 2021", author: "Surfuxion" },
+          { src: "/blog3.png.png", title: "Top Essential Trends in 2021", author: "SaberAli" },
+        ].map((post, index) => (
           <div
-            key={post.id}
-            className="bg-white rounded-md shadow-md p-4"
-            style={{ width: "300px", height: "420px" }}
+            key={index}
+            className="bg-white rounded-sm shadow-md flex flex-col items-center"
+            style={{ width: "100%", maxWidth: "370px", height: "auto" }} // Make the width responsive while maintaining max width
           >
-            <img src={post.imgSrc} alt={post.title} className="h-40 w-full object-cover rounded-md" />
-            <div className="mt-4">
-              <div className="text-sm text-gray-500 flex items-center gap-2">
-                <span>{post.author}</span>
-                <span>•</span>
-                <span>{post.date}</span>
-              </div>
-              <h2 className="text-lg font-semibold text-gray-800 mt-2">{post.title}</h2>
-              <p className="text-sm text-gray-600 mt-2">{post.description}</p>
-              <button className="text-blue-500 underline mt-4">Read More</button>
+            {/* Image section */}
+            <div className="mb-4 w-full">
+              <Image
+                src={post.src}
+                alt={post.title}
+                width={370} // Fixed image width for larger screens
+                height={255} // Fixed image height
+                className="mx-auto object-cover"
+              />
+            </div>
+
+            {/* Author and Date Info */}
+            <div className="text-sm text-[#151875] flex items-center justify-center pr-28">
+              <span><PenTool className="stroke-[#FB2E86] w-4 h-4" /></span>
+              <p>{post.author}</p>
+              <span><Calendar className="stroke-[#FFA454] w-4 h-4 ml-8" /></span>
+              <p>21 August, 2020</p>
+            </div>
+
+            {/* Blog Title */}
+            <h2
+              className="text-[18px] font-semibold mt-4 pr-20"
+              style={{
+                color: index === 1 ? '#FB2E86' : '#151875', // Custom color for the second post
+              }}
+            >
+              {post.title}
+            </h2>
+
+            {/* Blog Description */}
+            <p className="text-[16px] text-[#15187567] mt-4 pr-20 pl-6">
+              More of this less hello samlande lied much over tightly circa horse taped mightly.
+            </p>
+
+            {/* Read More Button */}
+            <div className="flex items-center justify-center mt-4 mb-6">
+              <button
+                className="text-[#15187567] underline text-[16px]"
+                style={{
+                  color: index === 1 ? '#FB2E86' : '#151875', // Custom color for the second post
+                }}
+              >
+                Read More
+              </button>
             </div>
           </div>
         ))}
@@ -56,4 +74,4 @@ const LeatestBlog: React.FC = () => {
   );
 };
 
-export default LeatestBlog;
+export default LatestBlog;

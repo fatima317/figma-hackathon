@@ -1,117 +1,130 @@
-import React from "react";
-
+import React from 'react'
+import Image from "next/image";
+import {Button} from "@/components/ui/button"
+import {Heart, Search, ShoppingCart } from 'lucide-react'
+import { Badge } from '@/components/ui/badge';
 const LatestProducts = () => {
-  const categories = ["New Arrival", "Best Seller", "Featured", "Special Offer"];
-  const products = [
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair1.png",
-    },
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair2.png",
-      sale: true, // Toggle for showing the sale badge
-    },
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair3.png",
-    },
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair4.png",
-    },
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair5.png",
-    },
-    {
-      name: "Comfort Handy Craft",
-      price: 42.0,
-      originalPrice: 65.0,
-      image: "/products/chair6.png",
-    },
-  ];
-
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-800 text-center mb-6">
-          Latest Products
-        </h2>
-
-        {/* Categories */}
-        <div className="flex flex-wrap justify-center space-x-4 mb-10">
-          {categories.map((category, index) => (
-            <div
-              key={index}
-              className="px-4 py-2 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition"
-            >
-              {category}
+        <section className="max-w-[1920px] mx-auto bg-white py-8">
+            {/* Title */}
+            <h2 className="text-center text-[32px] sm:text-[42px] font-bold text-[#151875] mb-10">
+              Leatest Products
+            </h2>
+            
+            {/* CATEGORIES */}
+            <div className="flex flex-row items-center mb-6 lg:px-96">
+                {["New Arrival", "Best Seller", "Featured", "Special Offer"
+                    ].map((category, index) => (
+                    <div key={index} 
+                    className="text-brandPrimary2 text-[18px] flex flex-col items-center"
+                    style={{
+                        width: '527px',
+                        height: '22px',
+                        color: index === 0 ? '#FB2E86' : '#151875',
+                        textDecoration: index === 0 ? 'underline' : 'none'}}>
+                        {category}
+                    </div>
+                ))}
             </div>
-          ))}
-        </div>
-
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-lg rounded-lg p-4 text-center border border-gray-200 relative"
+    
+            {/* PRODUCTS */}
+            <div className="grid grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:gap-28 lg:px-40 py-4">
+            {[
+              { src: "/image 1166 (1).png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+              { src: "/image 15.png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+              { src: "/image 1168.png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+              { src: "/image 23.png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+              { src: "/image 32.png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+              { src: "/image 3 (1).png", title: "Comfort Handy Craft", price: "$42.00", originalPrice:"$65.00"},
+            ].map((products, index) => (
+                <div
+                  key={index}
+                  className="relative flex flex-col items-center justify-center"
+            style={{
+              width: '360px',
+              height: '306px',
+              backgroundImage: index === 1 ?`url('')` : `url('/Frame 1 (1).png')` , // No background for other images
+              backgroundSize: index === 1 ? "277px, 370px" : "270px"
+            }}
             >
-              {/* Product Image */}
-              <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="object-contain h-full"
-                />
+                    {/* Image */}
+            <div className="mt-24">
+              <Image
+                src={products.src}
+                alt={products.title}
+                width={285} 
+                height={220} 
+                objectFit='contain'
+                className="mx-auto"
+                style={{
+                  width: index === 0 || index === 1 || index === 2 || index === 3? '222px' : '285px', 
+                  height: index === 0 || index === 1 || index === 2 || index === 3? '222px' : '220px',
+                }}
+              />
               </div>
-
-              {/* Product Info */}
-              <h3 className="text-gray-800 font-semibold mb-2">{product.name}</h3>
-              <div className="text-gray-500">
-                <span className="text-red-500 line-through mr-2">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
-                <span>${product.price.toFixed(2)}</span>
+              {index === 1 && (
+              <div  className="absolute top-8 left-4 flex flex-col gap-20">
+                <div>
+              <Badge 
+              variant="destructive" 
+              className='bg-[#3F509E] text-white flex items-center justify-center font-bold text-sm' 
+              style={{ 
+                width: '84.87px',
+                height: '56.73px',
+                border: '1px solid #3F509E',
+                clipPath: "polygon(98% 10%, 98% 56%, 2% 87%, 2% 41%)",
+              }}>
+              Sale</Badge>
               </div>
-
-              {/* Sale Badge */}
-              {product.sale && (
-                <div className="absolute top-4 right-4 bg-pink-500 text-white text-xs px-2 py-1 rounded">
-                  Sale
-                </div>
+              <div className='flex flex-col gap-2'>
+              <Button
+                 size="icon" variant="secondary" className='rounded-full'
+                style={{
+                  width: '30px',
+                  height:'30px',
+                }}
+              >
+               <ShoppingCart className='w-19 h-19 stroke-[#2F1AC4]' />
+              </Button>
+              <Button
+                 size="icon" variant="secondary" className='rounded-full bg-white'
+                style={{
+                  width: '30px',
+                  height:'30px',
+                }}
+              >
+               <Heart className='w-17 h-17 stroke-[#2F1AC4]'/>
+              </Button>
+              <Button
+                 size="icon" variant="secondary" className='rounded-full bg-white'
+                style={{
+                  width: '30px',
+                  height:'30px',
+                }}
+              >
+               <Search className='w-15 h-15 stroke-[#2F1AC4]'/>
+              </Button>
+              </div>
+              </div>
               )}
-
-              {/* Hover Icons */}
-              <div className="flex justify-center space-x-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  ❤
-                </button>
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  🛒
-                </button>
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  🔍
-                </button>
+              <div className='flex items-center justify-between gap-8 mt-16 mb-10'>
+              <p className="text-[#151875] font-semibold text-[14px]">
+              {products.title}
+              </p>
+              <div className='flex gap-2'>
+              <span className='text-[#151875] font-semibold text-[14px]'>
+                {products.originalPrice}
+              </span>
+              <span className='text-[#FB2448] font-semibold text-[14px] '>
+                {products.price}
+              </span>
               </div>
+              </div>
+              </div>
+            ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+        </section>
+  )
+}
 
-export default LatestProducts;
+export default LatestProducts

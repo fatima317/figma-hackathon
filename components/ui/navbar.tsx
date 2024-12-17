@@ -1,46 +1,47 @@
+'use client';
+import {useRouter} from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { ChevronDown, Search } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-
-
 const Navbar = () => {
+  const route = useRouter();
   return (
-    <nav className='w-full border-b-2 border-gray-100 p-4'>
-        <div className='max-w-7xl mx-auto flex items-center justify-between'>
-            <h1 className='text-2xl font-bold ml-72 text-[#0D0E43] tracking-wide'>Hekto</h1>
-            <div className='flex items-center justify-center gap-8 text-[#0D0E43] '>
+    <nav className='max-w-[1920px] mx-auto py-4'>
+        <div className='max-w-[1177px] h-[40px] flex items-center justify-center gap-8'>
+            <h2 className='text-[34px] font-bold text-[#0D0E43] ml-48'>Hekto</h2>
+            <div className='flex flex-wrap items-center justify-center gap-6 text-[#0D0E43] '>
                 <p className='relative text-[#FB2E86]'> 
-                <Link href={"#"} className='text-xs font-medium'>
+                <Link href={"/"} className='text-[16px] font-medium'>
+                <button onClick={()=>route.push('/')}></button>
                 Home
-                <ChevronDown className='absolute w-5 h-4 ml-7 top-1'/>
+                <ChevronDown className='absolute w-5 h-4 ml-10 top-1'/>
                 </Link>
                 </p>
                 <p>
-                <Link href={"#"} className='text-xs font-medium'>Pages</Link>
+                <Link href={"#"} className='text-[16px] font-medium'>Pages</Link>
                 </p>
                 <p>
-                <Link href={"#"} className='text-xs font-medium'>Products</Link>
+                <Link href={"#"} className='text-[16px] font-medium'>Products</Link>
                 </p>
                 <p>
-                <Link href={"#"} className='text-xs font-medium'>Blog</Link>
+                <Link href={"/blogPage"} className='text-[16px] font-medium'>Blog</Link>
+                <button onClick={()=>route.push('/blogPage')}></button>
                 </p>
                 <p>
-                <Link href={"#"} className='text-xs font-medium'>Pages</Link>
+                <Link href={"#"} className='text-[16px] font-medium'>Shop</Link>
                 </p>
                 <p>
-                <Link href={"#"} className='text-xs font-medium'>Shop</Link>
-                </p>
-                <p>
-                <Link href={"#"} className='text-xs font-medium'>Contact</Link>
+                <Link href={"/contactUs"} className='text-[16px] font-medium'>Contact</Link>
+                <button onClick={()=>route.push('/contactUs')}></button>
                 </p>
             </div>
-            <div className='hidden md:flex gap-2 mr-40'> 
-            <div className='relative'>
+            <div className='hidden md:flex ml-16'> 
+            <div className='relative' style={{width:"317px", height:"40px"}}>
                 <Input 
                 type='search' 
-                className='bg-white text-black mr-16 rounded-none h-8'/>
-                <Search className=' bg-[#FB2E86] absolute right-0 top-0 bottom-0 py-2 rounded-none stroke-white w-11 h-8'/>
+                className='bg-white text-black rounded-none'/>
+                <Search className=' bg-[#FB2E86] absolute right-0 top-0 bottom-0 py-2 rounded-none stroke-white w-12 h-9 '/>
             </div>
         </div>
         </div>
